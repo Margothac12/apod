@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APOD - NASA</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="d-flex flex-row bg-dark text-white text-center py-3">
+    <h1 class="flex-grow-1">Imágenes de la NASA</h1>
+    <button type="button" class="btn btn-light mx-4" data-bs-toggle="modal" data-bs-target="#favoritosModal">
+      <i class="bi bi-heart" style="font-size: xx-large;"></i>
+    </button>
+  </header>
+  <div class="modal fade" id="favoritosModal" tabindex="-1" aria-labelledby="favoritosModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="favoritosModalLabel">Favoritos</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="favs-gallery" class="row mt-4"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <h2 class="text-center">Galería de Imágenes (Últimos 30 Días)</h2>
+
+    <!-- Filtros -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <label for="start-date" class="form-label">Desde:</label>
+        <input type="date" id="start-date" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <label for="end-date" class="form-label">Hasta:</label>
+        <input type="date" id="end-date" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <label for="media-type" class="form-label">Tipo de Contenido:</label>
+        <select id="media-type" class="form-select">
+          <option value="all">Todos</option>
+          <option value="image">Solo Imágenes</option>
+          <option value="video">Solo Videos</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="ammount" class="form-label">Numero de registros:</label>
+        <input type="number" id="ammount" class="form-control" max="30" min="1">
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button id="buscar-apod" class="btn btn-primary">Buscar</button>
+    </div>
+
+    <!-- Galería de imágenes -->
+    <div id="apod-gallery" class="row mt-4"></div>
+  </div>
+  <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="detalleModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="detalleImagen"></div>
+          <p class="card-text" id="detalleTexto"></p>
+          <p class="text-muted" id="detalleFecha"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
